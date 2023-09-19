@@ -13,7 +13,9 @@ prompt = "astronaut riding a horse"
 
 def generateImage(prompt, generated_image_path, upscaled_image_path, model_path):
     pipe = DiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5")
+    # pipe = DiffusionPipeline.from_pretrained("stabilityai/stable-diffusion-xl-base-1.0")
     pipe = pipe.to("mps")
+    # pipe.enable_model_cpu_offload()
     # Recommended if your computer has < 64 GB of RAM
     pipe.enable_attention_slicing()
     # First-time "warmup" pass if PyTorch version is 1.13 (see explanation above)
